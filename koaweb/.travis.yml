@@ -1,71 +1,21 @@
-# language: node_js
-# node_js:
-# - 10.4.1
-# cache:
-#   directories:
-#   - node_modules
-# install:
-# - npm install
-# before_script: 
-# script:
-#   - npm run test
-# after_script:
-# - cd ./dist
-# - git init
-# - git config user.name "${U_NAME}"
-# - git config user.email "${U_EMAIL}"
-# - git add .
-# - git commit -m "Update tools"
-# - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:${P_BRANCH}
-# branches:
-#   only:
-#   - master
-# env:
-#   global: 
-# #before_install:
-# #- openssl aes-256-cbc -K $encrypted_91a6ab91630f_key -iv $encrypted_91a6ab91630f_iv
-#  # -in rongcuifang_rsa.enc -out ~/.ssh/rongcuifang_rsa -d
-#   #- chmod 600 ~/.ssh/rongcuifang_rsa
-#  # - echo -e "Host 102.201.64.94\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-
-
-
 language: node_js
-# nodejs版本
-node_js: 
-    - '10.4.1'
-
-# Travis-CI Caching
+node_js:
+- 10.4.1
 cache:
   directories:
-    - node_modules
-
-
-# S: Build Lifecycle
+  - node_modules
 install:
-  - npm install
-
-before_script:
-
-# 无其他依赖项所以执行npm run build 构建就行了
+- npm install
+before_script: 
 script:
-  - npm run build
-
-after_script:
-  - cd ./dist
-  - git init
-  - git config user.name "${U_NAME}"
-  - git config user.email "${U_EMAIL}"
-  - git add .
-  - git commit -m "Update tools"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:${P_BRANCH}
-# E: Build LifeCycle
-
-#指定分支，只有指定的分支提交时才会运行脚本
+  - npm run test
 branches:
   only:
-    - master
+  - master
 env:
- global:
-   # 我将其添加到了travis-ci的环境变量中
-   #- GH_REF: github.com/yimogit/metools.git 
+  global: 
+before_install:
+#- openssl aes-256-cbc -K $encrypted_91a6ab91630f_key -iv $encrypted_91a6ab91630f_iv
+ # -in rongcuifang_rsa.enc -out ~/.ssh/rongcuifang_rsa -d
+  #- chmod 600 ~/.ssh/rongcuifang_rsa
+ # - echo -e "Host 102.201.64.94\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
